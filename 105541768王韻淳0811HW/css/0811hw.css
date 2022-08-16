@@ -1,0 +1,163 @@
+body{
+	margin:0 auto;  
+	height:100%;
+}
+
+a{
+	color: #FFF;
+	text-decoration: none;  /* 不要有底線 */
+	font-weight: bold; /* 粗體字 */
+}
+
+#wrapper{
+	min-height: 100%; /* 整個區塊高度為１００％*/
+	margin-bottom: -100px; /*等一下 footer 的高度會是100px*/
+}
+
+#banner{
+	height:70px;
+	width:100%;
+}
+
+#logo{
+	float: left;
+}
+
+#logo img{
+	width: 100%;
+}
+
+#fb{
+	float: right;
+	margin-right: 1em;
+	margin-top: 11px;
+	height: 50px;
+}
+
+#fb img{
+	height: 91%;
+}
+
+#ig{
+	float: right;
+	margin-right: 1em;
+	margin-top: 9px;
+	height: 50px;
+}
+
+#ig img{
+	height: 100%;
+}
+
+#menu{
+	height:50px;
+	width: 100%;
+	background-color:#DB7318;
+	color:#ffffff;  /*區塊內的文字為白色*/
+}
+
+#menu ul{
+	margin-left: 18%;
+	color: #FFF;
+	padding-top: 10px;
+	font-size: 22px;
+}
+
+#menu ul li{
+	list-style: none;   /* 項目符號樣式: 無; */
+	float: left;        /* 浮塊: 左; */
+	padding-left: 2em;  /* size的單位: px (絕對單位) , em (相對單位) ;*/
+	padding-right: 2em;
+}
+
+#content{
+	width: 100%;
+	min-height: 300px;
+}
+
+#left1{
+	float: left;
+	width: 70%;
+	min-height: 300px;
+	padding-top: 20px;
+}
+
+#left1 h1{
+	text-align: center;
+}
+
+.l1text{
+	font-size: 20px;
+	padding: 0 40px 10px 60px;
+}
+
+#right{
+	float: right;
+	width: 30%;
+	min-height: 600px;
+	padding: 40px 0;
+}
+
+.newsItem{
+	width: 85%;
+	float: left;
+	height: 320px;
+	margin: 5%;
+	border: 2px solid #ccc;
+	border-radius: 15px;  /* 邊框導圓角 */
+}
+
+.newsItem img{
+	width: 100%;
+}
+
+.newsItem p{
+	font-weight: bold;
+	font-size: 23px;
+	text-align: center;
+}
+
+#left2{
+	float: left;
+	width: 70%;	
+	min-height: 300px;
+	margin-bottom: 20px;
+}
+
+#left2 h1{
+	text-align: center;
+}
+
+#left2img{
+	float: left;
+	width: 55%;
+}
+
+#left2img img{
+	width: 90%;
+	padding-left: 5%;
+}
+
+#left2text{
+	float: right;
+	width: 45%;
+}
+
+.l2text{
+	font-size: 20px;
+	padding: 10px 15px 10px 5px;
+}
+
+#footer{
+	width: 100%;
+	height: 100px;
+	background-color: #000000;
+	color:#ffffff;
+	text-align: center;  /* 文字對齊方式: 置中; */
+	clear: both;  /* 清除float(浮塊)效果 */
+}
+
+#footer span{
+	font-size: 20px;
+}
+
