@@ -128,8 +128,7 @@
 
 
 		function touch(){
-			var form = document.getElementById('ageCheck');
-			var age = form.value;
+			var age = document.getElementById('ageCheck').value;
 			if (age<15 || age>50) {
 				alert("您的年齡並非15~50歲之間。")
 			}
@@ -216,9 +215,6 @@
 		</form>
 	</div>
 
-	<script>
-		
-	</script>
 
 	
 </body>
