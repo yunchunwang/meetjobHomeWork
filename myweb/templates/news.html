@@ -1,0 +1,54 @@
+{% extends 'BasePage.html' %}
+
+{% block pageTitle %}
+寵物新聞
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/css/news.css" />
+{% endblock %}
+
+{% block mainContent %}
+	<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">  
+		<h2 style="width: 100%; text-align: center;" class="fw-bold">寵物新聞</h2>
+
+			<div class="container my-5">
+                <div class="row justify-content-md-center">
+					{% for item in newsList %}
+
+			            <div class="col-lg-3 mb-5 mb-lg-0 mx-1 my-2" style="height: 330px; text-align: center; border: 2px solid #DE6666; box-sizing: border-box; border-radius: 15px; background-color: rgba(255, 255, 255, .6)">
+			                <div class="bg-primary bg-gradient text-white rounded-3 mb-3 mt-3" style="display: inline-flex;">
+			                	{% if item.photo|length > 10 %}
+									<img style="height: 180px;" src="{{item.photo}}">
+								{% else %}
+									<img src="/static/images/CAT.jfif">
+								{% endif %}
+			                </div>
+			                <h2 class="h5 fw-bolder">{{item.title}}</h2>
+			                <a class="text-decoration-none" href="{{item.link}}" target="_blank">閱讀更多<i class="bi bi-arrow-right"></i></a>
+			            </div>
+
+					{% endfor %}
+				</div>
+			</div>
+
+
+		<div style="clear:both;height:60px;text-align: center;">
+
+			{% if newsList.has_previous %}
+
+				<a class="link-dark" style="text-decoration: none;" href="?page={{newsList.previous_page_number}}">上一頁</a>
+
+			{% endif %}
+
+			{% if newsList.has_next %}
+
+				<a class="link-dark" style="text-decoration: none;" href="?page={{newsList.next_page_number}}">下一頁</a>
+
+			{% endif %}
+
+		</div>
+		
+	</section>
+
+{% endblock %}

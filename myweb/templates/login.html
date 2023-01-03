@@ -1,0 +1,45 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+會員登入
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block mainContent %}
+
+<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">  
+		<h2 style="width: 100%; text-align: center;" class="fw-bold">會員登入</h2>
+	<div class="container w-50 mt-5" style="min-height: 30.2rem;">
+		<center><p style="color:#ff0000">{{msg}}</p></center>
+		<form action="" method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				<label>帳號</label>
+				<input type="email" name="email" required class="form-control"placeholder="請輸入email">
+			</div>
+			<div class="form-group">
+				<label>密碼</label>
+				<input type="password" name="password" required  class="form-control" placeholder="請輸入密碼">
+			</div>
+			<p></p>
+			<div class="col-md-12 text-center ">
+				<button type="submit" class="btn btn-block mybtn btn-danger tx-tfm">登入</button>
+			</div>
+			<div class="col-md-12 ">
+				<div class="login-or">
+					<hr class="hr-or">
+				</div>
+			</div>
+			<div class="form-group">
+				<p class="text-center">還沒有帳號嗎？ <a href="/register">按此註冊</a></p>
+			</div>
+		</form>
+	</div>
+
+
+</section>
+
+{% endblock %}

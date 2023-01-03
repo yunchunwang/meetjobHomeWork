@@ -1,0 +1,56 @@
+{% extends 'BasePage.html' %}
+
+{% block pageTitle %}
+聯繫我們
+{% endblock %}
+
+{% block mainContent %}    
+        <!-- Contact section-->
+        <section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">
+            <h2 style="width: 100%; text-align: center;" class="fw-bold">聯繫我們</h2>
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <p class="lead mb-0">歡迎提供各種意見或提出各種問題</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6" id="message" >
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="cuName" type="text" placeholder="請輸入姓名..." required/>
+                                <label for="name">姓名</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">此為必填選項</div>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="email" type="email" placeholder="name@example.com" required/>
+                                <label for="email">Email</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">此為必填選項</div>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="question" type="text" placeholder="請輸入問題主旨..." required/>
+                                <label for="phone">問題標題</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">此為必填選項</div>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" rows="10" name="content" type="text" placeholder="請輸入訊息..." style="height: 10rem" required/></textarea>
+                                <label for="message">訊息內文</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">此為必填選項</div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button class="btn btn-danger btn-lg" type="submit">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+{% endblock %}
+
+

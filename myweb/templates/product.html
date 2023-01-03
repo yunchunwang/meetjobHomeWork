@@ -1,0 +1,100 @@
+{% extends 'BasePage.html' %}
+
+{% block pageTitle %}
+商品總覽
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/product.css" />
+{% endblock %}
+
+{% block mainContent %}  
+
+<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed; ">
+
+{% if not allGoods.has_previous %}
+
+	<h2 style="width: 100%; text-align: center;" class="fw-bold">商品總覽</h2>
+
+{% endif %}
+
+
+
+<form class="row g-3 px-4 px-lg-6 w-50" method='get' style="margin:auto;">
+	<div class="col-12">
+
+		<label for="inputAddress" class="form-label">產品關鍵字</label>
+		<input type="text" name='p' class="form-control" placeholder="請輸入關鍵字">
+	</div>
+
+	<div class="col-md-6">
+		<label for="inputEmail4" class="form-label">最低價格</label>
+		<input type='text' name='priceS'class="form-control" placeholder="請輸入最低價格">
+	</div>
+
+	<div class="col-md-6">
+		<label for="inputPassword4" class="form-label">最高價格</label>
+		<input type='text' name='priceE' class="form-control" placeholder="請輸入最高價格">
+	</div>
+
+	<div class="col-12" style="text-align:center;">
+		<button type="submit" class="btn btn-danger" value='查詢'>查詢</button>
+	</div>
+
+</form>
+
+
+	
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for row in allGoods %}
+                	<div class="col mb-5">
+	                    <div class="card h-100 bg-light">
+	                    	<a class="link-dark" href="{{row.goods_url}}" target="_blank" style="text-decoration: none;">
+		                        <!-- Product image-->
+		                        {% if row.photo_url|length > 10 %}
+									<img class="card-img-top" src="{{row.photo_url}}" alt="{{row.name}}" />
+								{% else %}
+									<img card-img-top src="/static/images/CAT.jfif" alt="{{row.name}}">
+								{% endif %}
+		                        <!-- Product details-->
+		                        <div class="card-body p-4" style="min-height: 160px;">
+		                            <div class="text-center">
+		                                <!-- Product name-->
+		                                <h5 class="fw-bolder fs-5  align-middle">{{row.name}}</h5>
+		                                <!-- Product price-->
+		                                NT:{{row.price}}
+		                            </div>
+		                        </div>
+		                    </a>
+	                        <!-- Product actions-->
+	                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+	                            <div class="text-center">
+	                                <a class="btn btn-outline-dark mt-auto" href="/addtocart/add/{{row.id}}/">加入購物車</a>
+	                            </div>
+	                        </div>
+	                    </div>
+				    </div>
+            	{% endfor %}
+            </div>
+        </div>
+
+	<div style="clear:both;height:60px;text-align: center;">
+
+		{% if allGoods.has_previous %}
+
+			<a class="link-dark" style="text-decoration: none;" href="?page={{allGoods.previous_page_number}}">上一頁</a>
+
+		{% endif %}
+
+		{% if allGoods.has_next %}
+
+			<a class="link-dark" style="text-decoration: none;" href="?page={{allGoods.next_page_number}}">下一頁</a>
+
+		{% endif %}
+
+	</div>
+
+</section>
+
+{% endblock %}

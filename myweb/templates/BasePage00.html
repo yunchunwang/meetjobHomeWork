@@ -1,0 +1,193 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>BASEPAGE</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<style>
+		
+		body{
+			margin: 0;
+			width: 100%;
+		}
+
+		#banner{
+			width: 100%;
+			height: 50px;
+			background-color: #F7D4E3;
+			margin: 0;
+		}
+
+		#menu{
+			width: 100%;
+			height: 70px;
+			background-color: #F5C4C3;
+			margin: 0;
+		}
+
+		#menulist{
+			position: absolute; 
+			height: 70px;
+		}
+
+		#menulist , #menulist ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			text-align: center;
+		}
+
+		#menulist>li{
+			float: left;
+			line-height: 70px;
+			font-size: 30px;
+		}
+
+		#menulist a{
+			color: #735423;
+			display: block;
+			text-decoration: none;
+			width: 200px;
+		}
+
+		#menulist li ul{
+			position: absolute;
+			left: auto;
+			width: 200px;
+			font-size: 25px;
+			line-height: 45px;
+			background-color: #F5C4C3;
+		}
+
+		.active{
+			background-color: #EE9999;
+		}
+
+		#content{
+			width: 100%;
+		}
+		.contentImg img{
+			width: 100%;
+		}
+
+		#slide{
+			width: 100%;
+			text-align: center;
+			background-color: #F5C4C3;
+		}
+
+		#slide-title{
+			width: 100%;
+			line-height: 90px;
+			font-size: 48px;
+		}
+
+		#slide-content{
+			width: 100%;
+			line-height: 60px;
+			font-size: 32px;
+		}
+
+		#footer{
+			line-height: 80px;
+			text-align: center;
+			background-color: #EE7777;
+			height: 80px;
+			font-size: 20px;
+		}
+
+	</style>
+
+	<script>
+		
+		$(document).ready(function(){
+
+			$(".submenu").hide();
+			$("#menulist li").hover(
+
+				function(){
+					$(this).find("ul").slideDown("fast");
+					$(this).find("a:first").addClass("active");
+				},function(){
+					$(this).find(".submenu").fadeOut("fast");
+					$(this).find("a").removeClass("active");
+				}
+
+				);
+
+			$("#slide-content").hide();
+			$("#slide-title").click(
+				function(){
+					$("#slide").find("#slide-content").slideToggle('fast');
+			});
+
+			$()
+
+		});
+
+
+	</script>
+
+
+</head>
+
+
+<body>
+
+	<div id="banner">
+		
+	</div>
+
+	<div id="menu">
+		<ul id="menulist">
+
+			<li><a href="#">關於我們</a></li>
+			<li><a href="#">最新消息</a></li>
+
+			<li><a href="#">商品總覽</a></li>
+
+			<li><a href="#">聯絡我們</a></li>
+
+			<li><a href="#">會員專區</a>
+				<ul class="submenu">
+					<li><a href="#">登入</a></li>
+					<li><a href="#">註冊</a></li>
+					<li><a href="#">購物車</a></li>
+				</ul>
+			</li>
+
+
+
+
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="contentImg">
+			<img src="../static/images/CAT.jfif" alt="">
+		</div>
+
+		<div id="slide">
+			<div id="slide-title">
+				點擊以閱讀更多貓貓資訊……
+			</div>
+			<div id="slide-content">
+				貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓，超級可愛的！<br>
+				貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓，超級可愛的！<br>
+				貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓，超級可愛的！<br>
+				貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓，超級可愛的！<br>
+				貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓，超級可愛的！<br>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		
+	</div>
+
+
+	
+</body>
+</html>

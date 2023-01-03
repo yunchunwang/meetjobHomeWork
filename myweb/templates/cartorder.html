@@ -1,0 +1,122 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+購物車內容
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/css/cart.css" />
+{% endblock %}
+
+{% block mainContent %}
+
+<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">  
+	<h2 style="width: 100%; text-align: center;" class="fw-bold">訂單內容確認</h2>
+	<div class="mt-5" style="min-height: 30rem;">
+
+		<div id="maindiv">
+
+			<form action="/cartok/" method="post" name="form1" id="form1">
+				{% csrf_token %}
+
+				<table class="w-50 table align-middle table-hover" border="0" align="center" cellpadding="4" cellspacing="0">
+					
+					<thead class="table-danger">
+						<tr>
+							<th><strong>商品名稱</strong></th>
+							<th width="80" style="text-align: center; !important"><strong>單價</strong></th>
+							<th width="80" style="text-align: center; !important"><strong>數量</strong></th>
+							<th width="100" style="text-align: center; !important"><strong>金額</strong></th>
+						</tr>
+					</thead>
+
+					<tbody class="table-light">
+						{% for unit in allcart %}
+					
+							<tr>
+								<td align="left">{{ unit.0 }}</td>
+								<td width="80" align="center">${{ unit.1 }}</td>
+								<td width="80" align="center">{{ unit.2 }}</td>
+								<td width="100" align="center"><strong>$ {{ unit.3 }}</strong></td>
+							</tr>
+						
+						{% endfor %}	
+					</tbody>
+					<thead class="table-danger" >
+							<tr>
+								<td colspan="2"></td>
+								<td align="center" class="upline"><strong>小計</strong></td>
+								<td align="center" class="upline">$ {{total}} </td>
+							</tr>				
+
+							<tr>
+								<td colspan="2"></td>
+								<td align="center" class="upline"><strong>運費</strong></td>
+								<td align="center" class="upline">$ 100 </td>
+							</tr>				
+							<tr>
+								<td colspan="2"></td>
+								<td align="center" class="upline"><strong>總計</strong></td>
+								<td align="center" class="upline"><strong><font color="#ff0000">$ {{grandtotal}}</font></strong></td>
+							</tr>				
+					</thead>			
+						
+				</table>
+
+
+					<h2 style="width: 100%; text-align: center;" class="mt-5 fw-bold">訂購者資料</h2>
+					<p></p>
+
+					<table class="mt-4 table-borderless align-middle" width="30%" border="0" align="center" cellpadding="4" cellspacing="0">
+
+						<tr>
+							<td width="50%" align="center"><strong>姓名</strong></td>
+							<td width="50%"><input type="text" name="cuName" value="{{name}}" required /></td>
+						</tr>
+
+						<tr>
+							<td width="50%" align="center"><strong>電話</strong></td>
+							<td width="50%"><input type="text" name="cuPhone" value="{{phone}}" required /></td>
+						</tr>
+
+						<tr>
+							<td width="50%" align="center"><strong>寄送地址</strong></td>
+							<td width="50%"><input type="text" name="cuAddr" value="{{address}}" required /></td>
+						</tr>
+
+						<tr>
+							<td width="50%" align="center"><strong>Email</strong></td>
+							<td width="50%"><input type="text" name="cuEmail" value="{{email}}" readonly required /></td>
+						</tr>
+
+						<tr>
+							<td width="50%" align="center"><strong>付款方式</strong></td>
+							<td width="50%">
+								<input type="radio" name="payType" value="ATM轉帳" checked />ATM轉帳
+								<input type="radio" name="payType" value="貨到付款"  />貨到付款
+								<input type="radio" name="payType" value="信用卡"  />信用卡
+							</td>
+						</tr>
+
+					</table>
+					<p></p>
+					<table border="0" align="center" cellpadding="10" cellspacing="0">
+					
+					<tr>
+						<td><input class="btn btn-outline-danger" type="button" name="Continue" value="繼續購物" onClick="window.location='/product'" /></td>
+						<td><input class="btn btn-outline-danger" type="button" name="Empty" onClick="window.location='/cart/'" value="修改購物車" /></td>
+						<td><input class="btn btn-outline-danger" type="submit"  value="確認購物" /></td>
+					</tr>
+
+				</table>
+
+
+			</form>
+
+		</div>
+	</div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+已收到訊息
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block mainContent %}
+<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">  
+		<h2 style="width: 100%; text-align: center;" class="fw-bold">訊息已送出</h2>
+		<div class="mt-5" style="min-height: 30.2rem;">
+
+		<div class="container w-50 pt-3 pb-2" style="text-align: center; background-color: rgba(255,255,255,.5); border-radius: 5em">
+			<p>親愛的<strong>{{cuName}}</strong>(先生/小姐), 我們已經收到您的訊息</p>
+			<p>非常感謝您的寶貴意見，我們會盡快處理您的問題</p>
+		</div>
+
+	</div>
+</section>
+
+{% endblock %}

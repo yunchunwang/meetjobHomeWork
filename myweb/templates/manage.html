@@ -1,0 +1,43 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+會員管理
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block mainContent %}
+
+<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">  
+		<h2 style="width: 100%; text-align: center;" class="fw-bold">密碼變更</h2>
+	<div class="container w-50 mt-5" style="min-height: 30.2rem;">
+		<div id="message">
+			<p style="color: red; text-align: center;">{{msg}}</p>
+			<form class="contact_form" action="" method="post" >
+				{% csrf_token %}
+
+				<div class="form-group">
+					<label>舊密碼</label>
+					<input type="password" name="oldpwd" class="form-control" required />
+				</div>
+				<div class="form-group">
+					<label>新密碼</label>
+					<input type="password" name="newpwd" class="form-control" required />
+				</div>
+
+				<p></p>
+				<div class="col-md-12 text-center ">
+					<div class="form-group">
+						<button type="submit" class="btn btn-block mybtn btn-danger tx-tfm">變更</button>
+					</div>
+				</div>
+
+			</form>
+		</div>	
+
+	</div>
+
+</section>
+
+{% endblock %}

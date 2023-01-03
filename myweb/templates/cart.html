@@ -1,0 +1,98 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+購物車內容
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/css/cart.css" />
+{% endblock %}
+
+{% block mainContent %}
+
+
+<script>
+	
+	function confirmLink(message){
+		document.returnValue = confirm(message);
+	}
+
+
+</script>
+
+<section class="py-5 border-bottom" style="width: 100%; background-color: rgba(255,150,150,.15); background-image: url(/static/images/bgi.png); background-repeat:no-repeat; background-size: cover; background-blend-mode: multiply; background-attachment: fixed;">  
+		<h2 style="width: 100%; text-align: center;" class="fw-bold">購物車內容</h2>
+		<div class="mt-2" style="min-height: 32.7rem;">
+
+			<form class="pt-4" action="/addtocart/update/" method="post" name="form1" id="form1">
+				{% csrf_token %}
+
+				<table class="w-50 table align-middle table-hover" border="0" align="center" cellpadding="4" cellspacing="0">
+					
+					<thead class="table-danger">
+						<tr>
+							<th width="60" style="text-align: center; !important"><strong>取消</strong></th>
+							<th><strong>商品名稱</strong></th>
+							<th width="80" style="text-align: center; !important"><strong>單價</strong></th>
+							<th width="80" style="text-align: center; !important"><strong>數量</strong></th>
+							<th width="100" style="text-align: center; !important"><strong>金額</strong></th>
+						</tr>
+					</thead>
+
+					<tbody class="table-light">
+						{% for unit in allcart %}
+					
+							<tr>
+								<td align="center" bgcolor="#0f0"><a href="/addtocart/remove/{{forloop.counter0}}" class="delcart" style="text-decoration: none;" onClick="confirmLink('確定刪除此商品嗎？'); return document.returnValue">刪除</a></td>
+								<!-- unit.0 => 商品名稱 -->
+								<td align="left">{{ unit.0 }}</td>
+								<!-- unit.1 => 價格 -->
+								<td width="80" align="center">${{ unit.1 }}</td>
+
+								<td width="80" align="center"><input type="text" name='qty{{ forloop.counter0 }}' id="qty{{ forloop.counter0 }}" value="{{  unit.2}}" size="2" /></td>
+
+								<td width="100" align="center"><strong>$ {{ unit.3 }}</strong></td>
+							</tr>
+						
+						{% endfor %}	
+					</tbody>
+
+					<thead class="table-danger" >
+							<tr>
+								<td colspan="3"></td>
+								<td align="center" class="upline"><strong>小計</strong></td>
+								<td align="center" class="upline">$ {{total}} </td>
+							</tr>				
+
+							<tr>
+								<td colspan="3"></td>
+								<td align="center" class="upline"><strong>運費</strong></td>
+								<td align="center" class="upline">$ 100 </td>
+							</tr>				
+							<tr>
+								<td colspan="3"></td>
+								<td align="center" class="upline"><strong>總計</strong></td>
+								<td align="center" class="upline"><strong><font color="#ff0000">$ {{grandtotal}}</font></strong></td>
+							</tr>				
+					</thead>		
+				</table>
+
+				<table border="0" align="center" cellpadding="10" cellspacing="0">
+					
+					<tr>
+						<td><input class="btn btn-outline-danger" type="button" name="Continue" value="繼續購物" onClick="window.location='/product'" /></td>
+						<td><input class="btn btn-outline-danger" type="submit" name="Submit" value="更新購物車" /></td>
+						<td><input class="btn btn-outline-danger" type="button" name="Empty" onClick="window.location='/addtocart/empty/' " value="清空購物車" /></td>
+						<td><input class="btn btn-outline-danger" type="button" name="Order" onClick="window.location='/cartorder/'" value="我要結帳" /></td>
+					</tr>
+
+				</table>
+			</form>
+
+		</div>
+		
+
+</section>
+
+
+{% endblock %}
